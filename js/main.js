@@ -8,8 +8,19 @@ function myPosition(position) {
 }
 
 if(navigator.geolocation) {
-    console.log('Geolocation KO');
+    console.log('Geolocation OK');
     navigator.geolocation.getCurrentPosition(myPosition);
 } else {
     console.log('Geolocation KO');
+}
+
+//NOTIFICATION
+if(Notification) {
+    console.log('Notification OK');
+    Notification.requestPermission( function(status) {
+        console.log('Notification permission : '+status);
+        var n = new Notification("HTML5 API TEST" , {body: "Welcome Ninja !"});
+    });
+} else {
+    console.log('Notification KO');
 }
